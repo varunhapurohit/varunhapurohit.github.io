@@ -3,10 +3,1119 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>varunha</title>
+  <title>Varun Ha — Design & Development</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&display=swap" rel="stylesheet" />
+  <link href="https://api.fontshare.com/v2/css?f[]=aspekta@450,500,600,700&display=swap" rel="stylesheet" />
   <style>
-    body { margin: 0; background: #fff8fb; display: flex; align-items: center; justify-content: center; min-height: 100dvh; }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --black: #000;
+      --white: #fff;
+      --text-primary: rgba(0,0,0,1);
+      --text-secondary: rgba(0,0,0,0.8);
+      --text-tertiary: rgba(0,0,0,0.6);
+      --text-white-dim: rgba(255,255,255,0.6);
+      --surface-primary: #fff;
+      --surface-secondary: #fafafa;
+      --surface-brand: #d23010;
+      --border-tertiary: rgba(0,0,0,0.12);
+      --green: #6dc06d;
+      --font-aspekta: 'Aspekta', 'Inter', sans-serif;
+      --font-anton: 'Anton', sans-serif;
+      --font-inter: 'Inter', sans-serif;
+    }
+
+    html { font-size: 16px; scroll-behavior: smooth; }
+    body { background: var(--black); color: var(--white); overflow-x: hidden; }
+
+    /* ─── UTILITIES ─── */
+    .tag {
+      display: inline-flex; align-items: center; gap: 4px;
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: var(--text-tertiary);
+    }
+    .tag-dark { color: rgba(255,255,255,0.5); }
+    .tag::before { content: '['; opacity: 0.5; margin-right: 2px; }
+    .tag::after  { content: ']'; opacity: 0.5; margin-left: 2px; }
+
+    .label {
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 28px 40px;
+      mix-blend-mode: difference;
+    }
+    nav a {
+      font-family: var(--font-aspekta); font-weight: 700; font-size: 14px;
+      letter-spacing: 0.28px; text-transform: uppercase; color: var(--white);
+      text-decoration: none; opacity: 0.9;
+      transition: opacity 0.2s;
+    }
+    nav a:hover { opacity: 1; }
+    .nav-left, .nav-right { display: flex; gap: 40px; }
+    .nav-logo {
+      position: absolute; left: 50%; transform: translateX(-50%);
+      font-family: var(--font-aspekta); font-weight: 700; font-size: 14px;
+      letter-spacing: 0.28px; text-transform: uppercase; color: var(--white);
+      text-decoration: none;
+    }
+
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; height: 100vh; min-height: 700px;
+      display: flex; flex-direction: column; justify-content: space-between;
+      padding: 100px 40px 40px;
+      overflow: hidden;
+    }
+    .hero-bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: #0a0a0a;
+    }
+    .hero-bg img {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; opacity: 0.9;
+    }
+    .hero-content { position: relative; z-index: 1; flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .hero-headline {
+      font-family: var(--font-aspekta);
+      font-weight: 450;
+      font-size: clamp(72px, 9vw, 136px);
+      line-height: 0.91;
+      letter-spacing: -0.02em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+    .hero-headline .italic-line {
+      font-style: italic;
+      font-weight: 500;
+      color: var(--white);
+    }
+    .hero-headline .through-line {
+      font-weight: 500;
+    }
+    .hero-stats {
+      position: relative; z-index: 1;
+      display: flex; align-items: center; gap: 60px;
+      padding-top: 40px;
+    }
+    .hero-stat {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .hero-stat-num {
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: var(--white);
+    }
+    .hero-cta {
+      margin-left: auto;
+      display: flex; align-items: center; gap: 8px;
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: rgba(255,255,255,0.8); text-decoration: none;
+    }
+    .hero-cta svg { width: 14px; height: 14px; }
+    .trusted {
+      display: flex; align-items: center; gap: 10px;
+      margin-left: auto;
+    }
+    .trusted-avatars {
+      display: flex;
+    }
+    .trusted-avatar {
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); border: 1.5px solid rgba(255,255,255,0.2);
+      margin-left: -8px;
+    }
+    .trusted-avatar:first-child { margin-left: 0; }
+    .trusted-text {
+      font-family: var(--font-anton); font-size: 13px; letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.75);
+    }
+
+    /* ─── WORK SECTION ─── */
+    .work-section {
+      background: var(--black);
+      padding: 80px 0 0;
+      position: relative;
+    }
+    .work-grid {
+      position: relative;
+      width: 100%;
+      min-height: 2800px;
+    }
+    .work-item {
+      position: absolute;
+      display: flex; flex-direction: column; gap: 16px;
+    }
+    .work-thumb {
+      border-radius: 24px;
+      overflow: hidden;
+      background: #111;
+    }
+    .work-thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .work-tags {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .work-num {
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+    }
+    .work-tag { color: rgba(255,255,255,0.45) !important; }
+    .work-sep {
+      font-family: var(--font-inter); font-weight: 700;
+      font-size: 14px; color: rgba(255,255,255,0.35); letter-spacing: 0.28px;
+    }
+
+    /* ─── IMAGINE SECTION ─── */
+    .imagine-section {
+      background: var(--black);
+      padding: 120px 40px;
+      position: relative;
+    }
+    .imagine-header {
+      display: flex; align-items: flex-start; justify-content: space-between;
+      margin-bottom: 60px;
+    }
+    .imagine-label { color: rgba(255,255,255,0.5) !important; }
+    .imagine-body {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: center;
+      margin-bottom: 120px;
+    }
+    .imagine-text {
+      font-family: var(--font-aspekta); font-weight: 500;
+      font-size: clamp(40px, 4.5vw, 72px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--white);
+    }
+    .imagine-text .dim { color: rgba(255,255,255,0.5); }
+    .imagine-text .italic { font-style: italic; }
+    .imagine-photo {
+      border-radius: 16px; overflow: hidden;
+      aspect-ratio: 820/461;
+    }
+    .imagine-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .imagine-full {
+      text-align: center;
+      font-family: var(--font-aspekta); font-weight: 500;
+      font-size: clamp(40px, 4.5vw, 72px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--white);
+      max-width: 1000px; margin: 0 auto;
+    }
+    .imagine-full .dim { color: rgba(255,255,255,0.5); }
+    .imagine-full .italic { font-style: italic; }
+    .imagine-desc {
+      font-family: var(--font-aspekta); font-weight: 500;
+      font-size: 16px; line-height: 1.5; letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.6);
+      max-width: 480px; margin-top: 24px;
+    }
+
+    /* ─── EXPERTISE / SERVICES SECTION ─── */
+    .expertise-services {
+      background: var(--black);
+      padding: 0 40px 120px;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px;
+    }
+    .expertise-col { }
+    .expertise-label { margin-bottom: 24px; }
+    .expertise-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 18px 2px;
+      border-top: 1px solid rgba(255,255,255,0.12);
+    }
+    .expertise-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .expertise-name {
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: rgba(255,255,255,0.8);
+    }
+
+    /* ─── SERVICES LIST ─── */
+    .services-section {
+      background: var(--black);
+      padding: 0 40px 120px;
+    }
+    .services-header {
+      display: flex; align-items: center; justify-content: space-between;
+      margin-bottom: 0;
+    }
+    .service-row {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 36px 0;
+      border-top: 1px solid rgba(255,255,255,0.12);
+      position: relative; cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .service-row:hover { opacity: 0.75; }
+    .service-row:last-child { border-bottom: 1px solid rgba(255,255,255,0.12); }
+    .service-name {
+      font-family: var(--font-aspekta); font-weight: 500;
+      font-size: clamp(28px, 3.5vw, 56px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--white);
+      flex: 1;
+    }
+    .service-right { display: flex; align-items: center; gap: 24px; }
+    .service-arrow {
+      width: 56px; height: 56px; border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+    }
+    .service-arrow svg { width: 18px; height: 18px; }
+
+    /* ─── TESTIMONIALS SECTION ─── */
+    .testimonials-section {
+      background: var(--black);
+      padding: 120px 40px;
+      position: relative; overflow: hidden;
+    }
+    .testimonials-header {
+      text-align: center; margin-bottom: 80px;
+    }
+    .testimonials-headline {
+      font-family: var(--font-aspekta); font-weight: 500;
+      font-size: clamp(36px, 4vw, 64px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--white);
+    }
+    .testimonials-headline .italic { font-style: italic; color: rgba(255,255,255,0.5); }
+    .testimonials-orbs {
+      position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+      pointer-events: none; z-index: 0;
+    }
+    .orb {
+      position: absolute; border-radius: 50%;
+      border: 1px solid rgba(255,255,255,0.06);
+      transform: translate(-50%,-50%);
+    }
+    .orb-1 { width: 720px; height: 720px; top: 0; left: 0; }
+    .orb-2 { width: 1080px; height: 1080px; top: 0; left: 0; }
+    .testimonials-grid {
+      position: relative; z-index: 1;
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;
+    }
+    .testimonial-card {
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 20px;
+      padding: 28px;
+      display: flex; flex-direction: column; gap: 20px;
+    }
+    .testimonial-stars {
+      display: flex; gap: 4px;
+    }
+    .star { color: #f5c518; font-size: 14px; }
+    .testimonial-text {
+      font-family: var(--font-anton); font-size: 18px;
+      line-height: 1.5; letter-spacing: -0.02em;
+      color: rgba(255,255,255,0.8); flex: 1;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 12px;
+    }
+    .testimonial-avatar {
+      width: 32px; height: 32px; border-radius: 50%;
+      background: rgba(255,255,255,0.15); flex-shrink: 0;
+    }
+    .testimonial-meta { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+    .testimonial-name {
+      font-family: var(--font-anton); font-size: 14px;
+      color: var(--white); white-space: nowrap;
+    }
+    .testimonial-since {
+      position: absolute; top: -30px; left: 50%; transform: translateX(-50%);
+      background: var(--white); padding: 10px 16px;
+      font-family: var(--font-anton); font-size: 13px;
+      color: rgba(0,0,0,0.8); white-space: nowrap; border-radius: 4px;
+    }
+    .testimonial-img-float {
+      position: absolute;
+      width: 64px; height: 64px; border-radius: 50%;
+      overflow: hidden; border: 2px solid rgba(255,255,255,0.1);
+    }
+    .testimonial-img-float img { width: 100%; height: 100%; object-fit: cover; }
+
+    /* ─── FAQ SECTION ─── */
+    .faq-section {
+      background: var(--white);
+      padding: 120px 40px;
+    }
+    .faq-header {
+      display: flex; align-items: baseline; justify-content: space-between;
+      margin-bottom: 60px;
+    }
+    .faq-headline {
+      font-family: var(--font-aspekta); font-weight: 600;
+      font-size: clamp(40px, 4.5vw, 64px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--black);
+    }
+    .faq-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0 40px;
+    }
+    .faq-item {
+      border-top: 1px solid var(--border-tertiary);
+      cursor: pointer; padding: 28px 0;
+    }
+    .faq-item:last-child, .faq-item.last { border-bottom: 1px solid var(--border-tertiary); }
+    .faq-question-row {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 16px;
+    }
+    .faq-question {
+      font-family: var(--font-aspekta); font-weight: 600;
+      font-size: 16px; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--black);
+    }
+    .faq-icon {
+      width: 24px; height: 24px; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      transition: transform 0.3s;
+    }
+    .faq-icon svg { width: 18px; height: 18px; }
+    .faq-item.open .faq-icon { transform: rotate(45deg); }
+    .faq-answer {
+      overflow: hidden; max-height: 0; transition: max-height 0.3s ease;
+      font-family: var(--font-aspekta); font-size: 15px; font-weight: 450;
+      line-height: 1.6; color: var(--text-secondary);
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding-top: 16px; }
+    .faq-contact {
+      text-align: center; margin-top: 48px;
+      font-family: var(--font-anton); font-size: 16px;
+      line-height: 1.5; color: rgba(0,0,0,0.75);
+    }
+    .faq-contact a { color: var(--black); }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--white);
+      padding: 40px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: space-between;
+      min-height: 100vh;
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .footer-top {
+      display: flex; align-items: center; gap: 40px;
+    }
+    .footer-feature {
+      display: flex; align-items: center; gap: 8px;
+    }
+    .footer-dot {
+      width: 8px; height: 8px; border-radius: 2px;
+      background: var(--green); flex-shrink: 0;
+    }
+    .footer-feature-text {
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: var(--text-primary);
+    }
+    .footer-cta-wrap {
+      display: flex; flex-direction: column; align-items: center; gap: 32px;
+      text-align: center;
+    }
+    .footer-cta {
+      font-family: var(--font-aspekta); font-weight: 500;
+      font-size: clamp(60px, 8.5vw, 128px);
+      line-height: 1.1; letter-spacing: -0.02em;
+      text-transform: uppercase; color: var(--black);
+    }
+    .footer-cta-btn {
+      width: 72px; height: 72px; border-radius: 50%;
+      background: var(--surface-brand);
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer; border: none; transition: transform 0.2s, opacity 0.2s;
+      text-decoration: none;
+    }
+    .footer-cta-btn:hover { transform: scale(1.05); opacity: 0.9; }
+    .footer-cta-btn svg { width: 24px; height: 24px; color: white; }
+    .footer-bottom {
+      display: flex; align-items: center; justify-content: space-between;
+      width: 100%;
+    }
+    .footer-nav { display: flex; gap: 40px; }
+    .footer-nav a {
+      font-family: var(--font-aspekta); font-weight: 700;
+      font-size: 14px; letter-spacing: 0.28px; text-transform: uppercase;
+      color: var(--text-primary); text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .footer-nav a:hover { opacity: 0.6; }
+    .footer-copy {
+      font-family: var(--font-anton); font-size: 14px;
+      line-height: 1.5; letter-spacing: -0.02em;
+      color: var(--text-secondary);
+    }
+
+    /* ─── SECTION DIVIDERS ─── */
+    .section-separator {
+      width: 100%; height: 1px;
+      background: rgba(255,255,255,0.08);
+    }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 1024px) {
+      .imagine-body { grid-template-columns: 1fr; gap: 48px; }
+      .expertise-services { grid-template-columns: 1fr; }
+      .testimonials-grid { grid-template-columns: 1fr; max-width: 540px; margin: 0 auto; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 768px) {
+      .hero { padding: 80px 24px 32px; }
+      .imagine-section, .services-section, .testimonials-section, .faq-section { padding: 80px 24px; }
+      .expertise-services { padding: 0 24px 80px; }
+      footer { padding: 32px 24px; }
+      .footer-bottom { flex-direction: column; gap: 24px; text-align: center; }
+      .footer-nav { flex-wrap: wrap; justify-content: center; }
+      nav { padding: 20px 24px; }
+      .nav-left .nav-work, .nav-left .nav-shop, .nav-right .nav-blog, .nav-right .nav-privacy { display: none; }
+    }
+
+    /* ─── WORK SECTION RESPONSIVE ─── */
+    .work-grid-flex {
+      display: flex; flex-direction: column; gap: 48px;
+      padding: 0 40px 80px;
+    }
+    .work-card {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .work-card-thumb {
+      border-radius: 24px; overflow: hidden;
+      background: #111;
+      width: 100%; aspect-ratio: auto;
+    }
+    .work-card-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+    .work-card-tags { display: flex; align-items: center; gap: 8px; }
+
+    /* Work layout matching Figma - 2 col mixed */
+    .work-layout {
+      padding: 60px 40px 80px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-template-rows: auto auto auto;
+      gap: 32px;
+    }
+    .work-layout .wc1 { grid-column: 1; grid-row: 1; }
+    .work-layout .wc2 { grid-column: 2; grid-row: 1 / 3; }
+    .work-layout .wc3 { grid-column: 1; grid-row: 2; }
+    .work-layout .wc4 { grid-column: 1 / 3; grid-row: 3; }
+
+    .work-card-inner {
+      display: flex; flex-direction: column; gap: 14px;
+    }
+    .work-card-inner .thumb {
+      border-radius: 24px; overflow: hidden;
+      width: 100%;
+    }
+    .work-card-inner .thumb img {
+      width: 100%; height: 100%; object-fit: cover; display: block;
+    }
+    .work-card-inner .wc1 .thumb { aspect-ratio: 708/768; }
+    .work-card-inner .wc2 .thumb { aspect-ratio: 900/768; }
+    .work-card-inner .wc3 .thumb { aspect-ratio: 708/708; }
+    .work-card-inner .wc4 .thumb { aspect-ratio: 1200/675; }
+
+    /* Scroll-based sticky bg */
+    .hero-sticky-bg {
+      position: sticky; top: 0; height: 100vh; overflow: hidden;
+      pointer-events: none; z-index: 0;
+    }
+    .hero-sticky-bg img {
+      width: 100%; height: 100%; object-fit: cover;
+    }
   </style>
 </head>
-<body></body>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-left">
+      <a href="#work" class="nav-work">Work</a>
+      <a href="#services">Services</a>
+      <a href="#" class="nav-shop">Shop</a>
+    </div>
+    <a href="/" class="nav-logo">Varunha</a>
+    <div class="nav-right">
+      <a href="#" class="nav-blog">Blog</a>
+      <a href="#footer">Contact</a>
+      <a href="#" class="nav-privacy">Privacy</a>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-bg">
+      <img
+        src="https://www.figma.com/api/mcp/asset/aad46ae7-9251-4d14-9f89-a93b710451a7"
+        alt=""
+        loading="eager"
+      />
+    </div>
+
+    <div class="hero-content">
+      <h1 class="hero-headline">
+        Crafting<br>
+        <span class="italic-line">digital magic</span><br>
+        <span class="through-line">Through Designs</span>
+      </h1>
+    </div>
+
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <span class="hero-stat-num">50+</span>
+        <span class="tag tag-dark" style="color:rgba(255,255,255,0.4)">Projects</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">30+</span>
+        <span class="tag tag-dark" style="color:rgba(255,255,255,0.4)">Businesses</span>
+      </div>
+      <div class="hero-stat">
+        <span class="hero-stat-num">4+</span>
+        <span class="tag tag-dark" style="color:rgba(255,255,255,0.4)">Years experience</span>
+      </div>
+      <div class="trusted" style="margin-left:auto;">
+        <div class="trusted-avatars">
+          <img src="https://www.figma.com/api/mcp/asset/c24ed3c6-7f6f-4d30-bcb4-f9da0253d812" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.2);" />
+          <img src="https://www.figma.com/api/mcp/asset/5d3f55d4-7d2a-40d7-bc4f-a1aa76339659" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.2);margin-left:-8px;" />
+          <img src="https://www.figma.com/api/mcp/asset/4acfc4d8-2545-4fd7-81a1-e0592fc256c6" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.2);margin-left:-8px;" />
+        </div>
+        <span class="trusted-text">Trusted by 30+ businesses</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- WORK SECTION -->
+  <section id="work" style="background:#000; padding: 80px 40px;">
+    <div style="display:grid; grid-template-columns: 708fr 900fr; gap:32px; max-width:1520px; margin:0 auto;">
+      <!-- Col 1: cards 1 & 3 -->
+      <div style="display:flex; flex-direction:column; gap:32px;">
+        <!-- Work 1 -->
+        <div class="work-card-inner">
+          <div class="thumb" style="border-radius:24px; overflow:hidden; aspect-ratio:708/768; background:#111;">
+            <img
+              src="https://www.figma.com/api/mcp/asset/91d00929-54a8-48a3-ac23-c9cb65c1d96b"
+              alt="Project 1 — Design & Development"
+              loading="lazy"
+            />
+          </div>
+          <div class="work-card-tags">
+            <span class="label" style="color:rgba(255,255,255,0.9)">Project</span>
+            <span class="tag" style="color:rgba(255,255,255,0.4);">Design</span>
+            <span class="tag" style="color:rgba(255,255,255,0.4);">Development</span>
+            <span class="work-sep">/</span>
+            <span class="tag" style="color:rgba(255,255,255,0.4);">Custom Project</span>
+          </div>
+        </div>
+        <!-- Work 3 -->
+        <div class="work-card-inner">
+          <div class="thumb" style="border-radius:16px; overflow:hidden; aspect-ratio:708/708; background:#111;">
+            <img
+              src="https://www.figma.com/api/mcp/asset/fb5501db-cf4e-412f-9c41-d19d272b47c2"
+              alt="Project 3 — Design & Development"
+              loading="lazy"
+            />
+          </div>
+          <div class="work-card-tags">
+            <span class="label" style="color:rgba(255,255,255,0.9)">Project</span>
+            <span class="tag" style="color:rgba(255,255,255,0.4);">Design</span>
+            <span class="tag" style="color:rgba(255,255,255,0.4);">Development</span>
+            <span class="work-sep">/</span>
+            <span class="tag" style="color:rgba(255,255,255,0.4);">Custom Project</span>
+          </div>
+        </div>
+      </div>
+      <!-- Col 2: card 2 -->
+      <div class="work-card-inner" style="align-self:start;">
+        <div class="thumb" style="border-radius:24px; overflow:hidden; aspect-ratio:900/768; background:#111; margin-top:160px;">
+          <img
+            src="https://www.figma.com/api/mcp/asset/8718b69f-d171-449c-89a8-93ceb315595c"
+            alt="Project 2 — Design & Development"
+            loading="lazy"
+          />
+        </div>
+        <div class="work-card-tags">
+          <span class="label" style="color:rgba(255,255,255,0.9)">Project</span>
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Design</span>
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Development</span>
+          <span class="work-sep">/</span>
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Custom Project</span>
+        </div>
+      </div>
+    </div>
+    <!-- Work 4 — full width -->
+    <div class="work-card-inner" style="max-width:1520px; margin: 32px auto 0;">
+      <div class="thumb" style="border-radius:24px; overflow:hidden; aspect-ratio:1200/675; background:#111; max-width:1200px; margin-left:auto;">
+        <img
+          src="https://www.figma.com/api/mcp/asset/3d69411a-047b-4421-956e-8ea30f99b1ac"
+          alt="Project 4 — Design & Development"
+          loading="lazy"
+        />
+      </div>
+      <div class="work-card-tags" style="max-width:1200px; margin-left:auto;">
+        <span class="label" style="color:rgba(255,255,255,0.9)">Project</span>
+        <span class="tag" style="color:rgba(255,255,255,0.4);">Design</span>
+        <span class="tag" style="color:rgba(255,255,255,0.4);">Development</span>
+        <span class="work-sep">/</span>
+        <span class="tag" style="color:rgba(255,255,255,0.4);">Custom Project</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- IMAGINE SECTION -->
+  <section class="imagine-section">
+    <div style="max-width:1520px; margin:0 auto;">
+      <!-- Section label -->
+      <div style="display:flex; justify-content:flex-end; margin-bottom:48px;">
+        <span class="tag" style="color:rgba(255,255,255,0.4);">Section</span>
+      </div>
+
+      <!-- Top label row -->
+      <div style="display:flex; align-items:center; gap:8px; margin-bottom:40px;">
+        <span class="label" style="color:rgba(255,255,255,0.9);">Description</span>
+        <span class="tag" style="color:rgba(255,255,255,0.4);">Expertise</span>
+      </div>
+
+      <!-- Block 1: text left, photo right -->
+      <div class="imagine-body">
+        <div>
+          <h2 class="imagine-text">
+            Imagine there is <span class="italic dim">one-stop</span><br>
+            <span style="color:rgba(255,255,255,0.9)">solution to your entire<br>online presence</span>
+          </h2>
+          <p class="imagine-desc" style="margin-top:32px;">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mcenas elementum
+            accumsan euismod. Donec quis sagittis enim. Etiam condimentum ipsum
+            vitae consequat malesuada dolorumen.
+          </p>
+          <a href="#footer" style="display:inline-flex;align-items:center;gap:8px;margin-top:24px;font-family:var(--font-aspekta);font-weight:700;font-size:14px;letter-spacing:0.28px;text-transform:uppercase;color:rgba(255,255,255,0.6);text-decoration:none;">
+            View all work
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+              <path d="M3 7h8M7 3l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </a>
+        </div>
+        <div class="imagine-photo">
+          <img
+            src="https://www.figma.com/api/mcp/asset/90207112-5648-489c-a450-37c2e0478961"
+            alt=""
+            loading="lazy"
+          />
+        </div>
+      </div>
+
+      <!-- Block 2: centered text -->
+      <div style="text-align:center; padding:80px 0;">
+        <h2 class="imagine-full">
+          Imagine you work with one freelancer that has
+          <span class="italic" style="color:rgba(255,255,255,0.5)">oversight</span>
+          over your entire business.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERTISE + SERVICES SECTION -->
+  <section id="services" style="background:#000; padding: 0 40px 120px;">
+    <div style="max-width:1520px; margin:0 auto; display:grid; grid-template-columns:620px 1fr; gap:80px; align-items:start;">
+
+      <!-- Expertise col -->
+      <div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:24px;">
+          <span class="label" style="color:rgba(255,255,255,0.9);">Description</span>
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Expertise</span>
+        </div>
+        <div class="expertise-row">
+          <span class="expertise-name">Brand Identity</span>
+          <span class="tag" style="color:rgba(255,255,255,0.35); font-size:13px;">Strategy</span>
+        </div>
+        <div class="expertise-row">
+          <span class="expertise-name">Web Design</span>
+          <span class="tag" style="color:rgba(255,255,255,0.35); font-size:13px; display:inline-flex; gap:4px;">
+            UI/UX
+            <span style="opacity:0.5">+</span>
+            Interaction Design
+          </span>
+        </div>
+        <div class="expertise-row">
+          <span class="expertise-name">Development</span>
+          <span class="tag" style="color:rgba(255,255,255,0.35); font-size:13px;">Frontend</span>
+        </div>
+        <div class="expertise-row">
+          <span class="expertise-name">SEO</span>
+          <span class="tag" style="color:rgba(255,255,255,0.35); font-size:13px;">Growth</span>
+        </div>
+        <div class="expertise-row" style="border-bottom:1px solid rgba(255,255,255,0.12);">
+          <span class="expertise-name">Strategy</span>
+          <span class="tag" style="color:rgba(255,255,255,0.35); font-size:13px;">Consulting</span>
+        </div>
+      </div>
+
+      <!-- Services col -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:0;">
+          <span class="label" style="color:rgba(255,255,255,0.9);">Description</span>
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Services</span>
+        </div>
+
+        <div class="service-row">
+          <span class="service-name">Startup branding sprint</span>
+          <div class="service-right">
+            <span class="tag" style="color:rgba(255,255,255,0.35);">Brand identity</span>
+            <div class="service-arrow">
+              <svg viewBox="0 0 18 18" fill="none" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3.75 9h10.5M9.75 4.5 14.25 9l-4.5 4.5"/>
+              </svg>
+            </div>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <span class="service-name">Startup website sprint</span>
+          <div class="service-right">
+            <span class="tag" style="color:rgba(255,255,255,0.35);">Website design</span>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <span class="service-name">Design &amp; dev on demand</span>
+          <div class="service-right">
+            <span class="tag" style="color:rgba(255,255,255,0.35);">Flexible subscription</span>
+          </div>
+        </div>
+
+        <div class="service-row">
+          <span class="service-name">Template support</span>
+          <div class="service-right">
+            <span class="tag" style="color:rgba(255,255,255,0.35);">Affordable entry</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS SECTION -->
+  <section class="testimonials-section">
+    <div style="max-width:1520px; margin:0 auto; position:relative;">
+      <div class="testimonials-header" style="margin-bottom:60px;">
+        <div style="display:flex;justify-content:flex-end;margin-bottom:24px;">
+          <span class="tag" style="color:rgba(255,255,255,0.4);">Testimonials</span>
+        </div>
+        <h2 class="testimonials-headline">
+          Don't take my word for it.
+          <span class="italic">Hear it</span>
+          directly from my clients.
+        </h2>
+      </div>
+
+      <!-- Floating client date labels -->
+      <div style="position:relative; margin-bottom:48px; height:60px;">
+        <div style="position:absolute;left:calc(25% - 60px);top:0;background:white;padding:10px 16px;border-radius:4px;font-family:var(--font-anton);font-size:13px;color:rgba(0,0,0,0.75);white-space:nowrap;">
+          Collaborating daily since Oct 1, 2020
+        </div>
+        <div style="position:absolute;left:50%;transform:translateX(-50%);top:0;background:white;padding:10px 16px;border-radius:4px;font-family:var(--font-anton);font-size:13px;color:rgba(0,0,0,0.75);white-space:nowrap;">
+          Collaborating since Mar 9, 2021
+        </div>
+        <div style="position:absolute;right:calc(12% + 20px);top:0;background:white;padding:10px 16px;border-radius:4px;font-family:var(--font-anton);font-size:13px;color:rgba(0,0,0,0.75);white-space:nowrap;">
+          First gig on Oct 27, 2021
+        </div>
+      </div>
+
+      <!-- Client avatar row -->
+      <div style="position:relative; height:80px; margin-bottom:40px;">
+        <div style="position:absolute;left:calc(25% - 60px);display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.1);">
+            <img src="https://www.figma.com/api/mcp/asset/0bdc0148-8eb0-4604-a9d9-efe82a95858c" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+        </div>
+        <div style="position:absolute;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.1);">
+            <img src="https://www.figma.com/api/mcp/asset/aa6703c5-3350-4288-baaa-71cfc9a79d85" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+        </div>
+        <div style="position:absolute;right:calc(12% + 20px);display:flex;flex-direction:column;align-items:center;gap:4px;">
+          <div style="width:64px;height:64px;border-radius:50%;overflow:hidden;border:2px solid rgba(255,255,255,0.1);">
+            <img src="https://www.figma.com/api/mcp/asset/5496ec69-392c-44db-9e6a-65595e3d91b3" alt="" style="width:100%;height:100%;object-fit:cover;" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Testimonial cards -->
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod,
+            nunc id dictum dictum, nisi nunc tristique lectus.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">Client Name</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">US</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">Startup Founder</span>
+              <span style="font-family:var(--font-inter);font-size:14px;color:rgba(255,255,255,0.3);">/</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">from LinkedIn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod,
+            nunc id dictum dictum, nisi nunc tristique lectus.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">Client Name</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">UK</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">Freelancer</span>
+              <span style="font-family:var(--font-inter);font-size:14px;color:rgba(255,255,255,0.3);">/</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">from LinkedIn</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">
+            <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
+          </div>
+          <p class="testimonial-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi euismod,
+            nunc id dictum dictum, nisi nunc tristique lectus.
+          </p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar"></div>
+            <div class="testimonial-meta">
+              <span class="testimonial-name">Client Name</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">DE</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">CEO</span>
+              <span style="font-family:var(--font-inter);font-size:14px;color:rgba(255,255,255,0.3);">/</span>
+              <span class="tag" style="color:rgba(255,255,255,0.4);">from LinkedIn</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trusted row -->
+      <div style="display:flex;align-items:center;justify-content:center;gap:12px;margin-top:48px;">
+        <div style="display:flex;">
+          <img src="https://www.figma.com/api/mcp/asset/c24ed3c6-7f6f-4d30-bcb4-f9da0253d812" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.15);" />
+          <img src="https://www.figma.com/api/mcp/asset/5d3f55d4-7d2a-40d7-bc4f-a1aa76339659" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.15);margin-left:-8px;" />
+          <img src="https://www.figma.com/api/mcp/asset/4acfc4d8-2545-4fd7-81a1-e0592fc256c6" alt="" style="width:28px;height:28px;border-radius:50%;object-fit:cover;border:1.5px solid rgba(255,255,255,0.15);margin-left:-8px;" />
+        </div>
+        <span class="trusted-text">Trusted by 30+ businesses</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- FAQ SECTION -->
+  <section class="faq-section">
+    <div style="max-width:1520px; margin:0 auto;">
+      <div class="faq-header">
+        <div>
+          <div style="display:flex;align-items:center;gap:8px;margin-bottom:20px;">
+            <span class="label" style="color:rgba(0,0,0,0.9)">Description</span>
+            <span class="tag" style="color:rgba(0,0,0,0.4)">FAQ</span>
+          </div>
+          <h2 class="faq-headline">Questions?<br>Answers!</h2>
+        </div>
+      </div>
+
+      <div class="faq-grid">
+        <!-- Left column -->
+        <div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question-row">
+              <p class="faq-question">What types of projects do you take on?</p>
+              <div class="faq-icon">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M9 4v10M4 9h10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              I work with startups and businesses on branding, web design, and development projects.
+              Whether you need a full brand identity or a new website, I can help.
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question-row">
+              <p class="faq-question">How long does a typical project take?</p>
+              <div class="faq-icon">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M9 4v10M4 9h10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              Sprint projects (branding or website) typically take 2–4 weeks. Larger engagements
+              are scoped individually based on complexity and requirements.
+            </div>
+          </div>
+
+          <div class="faq-item last" onclick="toggleFaq(this)">
+            <div class="faq-question-row">
+              <p class="faq-question">Do you offer ongoing support?</p>
+              <div class="faq-icon">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M9 4v10M4 9h10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              Yes — the Design &amp; Dev on Demand subscription gives you ongoing access to
+              design and development work on a flexible monthly basis.
+            </div>
+          </div>
+        </div>
+
+        <!-- Right column -->
+        <div>
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question-row">
+              <p class="faq-question">What is your pricing model?</p>
+              <div class="faq-icon">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M9 4v10M4 9h10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              Sprint packages are fixed-price. On Demand is subscription-based. Template
+              support is the most affordable option for early-stage projects.
+            </div>
+          </div>
+
+          <div class="faq-item" onclick="toggleFaq(this)">
+            <div class="faq-question-row">
+              <p class="faq-question">Can you work with my existing team?</p>
+              <div class="faq-icon">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M9 4v10M4 9h10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              Absolutely. I collaborate well with in-house teams, developers, and other
+              freelancers. I can slot into your workflow or lead the project end-to-end.
+            </div>
+          </div>
+
+          <div class="faq-item last" onclick="toggleFaq(this)">
+            <div class="faq-question-row">
+              <p class="faq-question">Where are you based?</p>
+              <div class="faq-icon">
+                <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+                  <path d="M9 4v10M4 9h10"/>
+                </svg>
+              </div>
+            </div>
+            <div class="faq-answer">
+              I work remotely and am available for clients worldwide. Time zone overlap
+              is typically not an issue — I'm flexible with scheduling.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <p class="faq-contact" style="margin-top:48px;">
+        Still got questions? <a href="mailto:hello@varunha.com">Contact</a> me.
+      </p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="footer">
+    <div class="footer-top">
+      <div class="footer-feature">
+        <span class="footer-feature-text">Remote / Global</span>
+        <span class="tag" style="color:rgba(0,0,0,0.4);">Available now</span>
+      </div>
+      <div class="footer-feature">
+        <div class="footer-dot"></div>
+        <span class="footer-feature-text" id="footer-time">—</span>
+        <span class="tag" style="color:rgba(0,0,0,0.4);">UTC +5:30</span>
+      </div>
+    </div>
+
+    <!-- Logo / signature mark -->
+    <div style="height:28px;">
+      <img
+        src="https://www.figma.com/api/mcp/asset/e801c4da-5407-4939-8c1e-c27de576e3e7"
+        alt="Varunha"
+        style="height:100%; width:auto; display:block; margin:0 auto;"
+      />
+    </div>
+
+    <div class="footer-cta-wrap">
+      <p class="footer-cta">Let's build it.</p>
+      <a href="mailto:hello@varunha.com" class="footer-cta-btn" aria-label="Contact">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M12 5v14M5 12h14"/>
+        </svg>
+      </a>
+    </div>
+
+    <div class="footer-bottom">
+      <nav class="footer-nav">
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#">Shop</a>
+      </nav>
+      <p class="footer-copy">Copyright © 2025 Varun Ha. All rights reserved.</p>
+      <nav class="footer-nav">
+        <a href="#">Blog</a>
+        <a href="#footer">Contact</a>
+        <a href="#">Privacy</a>
+      </nav>
+    </div>
+  </footer>
+
+  <script>
+    // FAQ toggle
+    function toggleFaq(el) {
+      const isOpen = el.classList.contains('open');
+      document.querySelectorAll('.faq-item.open').forEach(i => i.classList.remove('open'));
+      if (!isOpen) el.classList.add('open');
+    }
+
+    // Live time display
+    function updateTime() {
+      const el = document.getElementById('footer-time');
+      if (!el) return;
+      const now = new Date();
+      const ist = new Intl.DateTimeFormat('en-GB', {
+        hour: '2-digit', minute: '2-digit', second: '2-digit',
+        timeZone: 'Asia/Kolkata', hour12: false
+      }).format(now);
+      el.textContent = ist;
+    }
+    updateTime();
+    setInterval(updateTime, 1000);
+  </script>
+</body>
 </html>
