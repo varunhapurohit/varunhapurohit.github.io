@@ -115,19 +115,21 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* Portrait */
+    /* Portrait — height-driven to match Figma proportions (854px tall in 1024px hero = 83.4%) */
     .hero-portrait {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: 0;
-      width: min(761px, 53%);
+      height: 84svh;
+      width: auto;
+      max-width: 56vw;
       z-index: 2;
       pointer-events: none;
     }
     .hero-portrait img {
-      width: 100%;
-      height: auto;
+      height: 100%;
+      width: auto;
       display: block;
       object-fit: contain;
       object-position: bottom center;
