@@ -115,24 +115,20 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* Portrait — height-driven; hero overflow:hidden clips any side overhang on narrow screens */
+    /* Portrait — height set directly on img, wrapper only handles positioning */
     .hero-portrait {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
       bottom: 0;
-      height: 84svh;
-      width: auto;
-      aspect-ratio: 761 / 854;
       z-index: 2;
       pointer-events: none;
+      line-height: 0;
     }
     .hero-portrait img {
-      width: 100%;
-      height: 100%;
+      height: 84svh;
+      width: auto;
       display: block;
-      object-fit: contain;
-      object-position: bottom center;
     }
 
     /* Scroll indicator */
