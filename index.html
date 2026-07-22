@@ -115,7 +115,7 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* Portrait — height-driven, aspect-ratio locks width so centering is reliable on all screens */
+    /* Portrait — height-driven; hero overflow:hidden clips any side overhang on narrow screens */
     .hero-portrait {
       position: absolute;
       left: 50%;
@@ -124,7 +124,6 @@
       height: 84svh;
       width: auto;
       aspect-ratio: 761 / 854;
-      max-width: 90vw;
       z-index: 2;
       pointer-events: none;
     }
