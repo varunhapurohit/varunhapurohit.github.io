@@ -6,12 +6,6 @@ on:
       - main
 
   workflow_dispatch:
-    inputs:
-      branch:
-        description: "Branch to deploy (leave empty to deploy main)"
-        required: false
-        default: "main"
-        type: string
 
 permissions:
   contents: read
@@ -30,19 +24,8 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
 
     steps:
-      - name: Resolve branch
-        id: branch
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ -n "${{ inputs.branch }}" ]; then
-            echo "ref=${{ inputs.branch }}" >> $GITHUB_OUTPUT
-          else
-            echo "ref=main" >> $GITHUB_OUTPUT
-          fi
-
-      - name: Checkout ${{ steps.branch.outputs.ref }}
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: ${{ steps.branch.outputs.ref }}
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
