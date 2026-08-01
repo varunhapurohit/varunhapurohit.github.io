@@ -6,14 +6,18 @@
   <title>Varunha Purohit — Digital Designer & Motion Artist</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --white: #fff;
-      --black: #000;
-      --grey-section: rgba(217, 217, 217, 0.2);
+      --white:      #ffffff;
+      --off-white:  #f9faf9;
+      --black:      #000000;
+      --near-black: #09090a;
+      --yellow:     #f1ff1f;
+      --cyan:       #1ff1ff;
+      --pink:       #ff1ff1;
       --font-serif: "New York", "Iowan Old Style", "Apple Garamond", "Baskerville", Georgia, serif;
       --font-inter: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
     }
@@ -24,22 +28,20 @@
     /* ─── NAV ─── */
     .nav {
       position: fixed;
-      top: 32px;
+      top: 50px;
       left: 50%;
       transform: translateX(-50%);
       z-index: 100;
-      width: min(1070px, calc(100% - 80px));
-      height: 87px;
-      background: rgba(255, 255, 255, 0.15);
+      width: min(1037px, calc(100% - 80px));
+      height: 81px;
+      background: rgba(217, 217, 217, 0.2);
       backdrop-filter: blur(24px);
       -webkit-backdrop-filter: blur(24px);
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 30px;
+      border-radius: 22px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 0 35px;
-      box-shadow: 0 4px 32px rgba(0,0,0,0.06);
+      padding: 0 28px;
     }
     .nav-brand {
       display: flex;
@@ -52,7 +54,8 @@
       text-decoration: none;
     }
     .nav-star { font-size: 18px; line-height: 1; }
-    .nav-contact {
+    .nav-links { display: flex; align-items: center; gap: 28px; }
+    .nav-link {
       font-family: var(--font-inter);
       font-weight: 600;
       font-size: 20px;
@@ -60,7 +63,7 @@
       text-decoration: none;
       transition: opacity 0.2s;
     }
-    .nav-contact:hover { opacity: 0.6; }
+    .nav-link:hover { opacity: 0.6; }
 
     /* ─── HERO ─── */
     .hero {
@@ -115,7 +118,7 @@
       to   { transform: translateX(-50%); }
     }
 
-    /* Portrait — height set directly on img, wrapper only handles positioning */
+    /* Portrait */
     .hero-portrait {
       position: absolute;
       left: 50%;
@@ -131,11 +134,55 @@
       display: block;
     }
 
+    /* Stat boxes */
+    .stat-box {
+      position: absolute;
+      z-index: 3;
+      width: clamp(120px, 14.2vw, 204px);
+      height: clamp(120px, 14.2vw, 204px);
+      background: rgba(255, 239, 211, 0.2);
+      border-radius: clamp(20px, 2.4vw, 35px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      bottom: 20svh;
+    }
+    .stat-box-left  { left: 12.5%; }
+    .stat-box-right { right: 12.5%; }
+
+    .stat-primary {
+      font-family: var(--font-inter);
+      font-weight: 800;
+      font-size: clamp(30px, 3.8vw, 55px);
+      line-height: 1;
+      color: var(--black);
+    }
+    .stat-unit {
+      font-size: clamp(8px, 1vw, 15px);
+      font-weight: 400;
+      vertical-align: super;
+    }
+    .stat-row {
+      font-family: var(--font-inter);
+      font-weight: 400;
+      font-size: clamp(12px, 2vw, 34px);
+      line-height: 1.1;
+      color: var(--black);
+    }
+    .stat-small {
+      font-family: var(--font-inter);
+      font-weight: 400;
+      font-size: clamp(10px, 1.2vw, 20px);
+      color: var(--black);
+      line-height: 1.2;
+    }
+
     /* Scroll indicator */
     .scroll-indicator {
       position: absolute;
-      left: 40px;
-      bottom: 72px;
+      left: 12.5%;
+      bottom: 6svh;
       z-index: 3;
       display: flex;
       flex-direction: column;
@@ -163,18 +210,19 @@
 
     /* ─── ABOUT ─── */
     .about-section {
-      background: var(--black);
+      background: var(--near-black);
       width: 100%;
-      padding: clamp(60px, 7svh, 100px) clamp(24px, 12.5%, 180px);
+      border-radius: 32px 32px 0 0;
+      padding: clamp(60px, 7svh, 110px) clamp(24px, 12.5%, 180px);
       display: flex;
       align-items: flex-start;
       gap: clamp(40px, 6vw, 120px);
     }
     .about-title {
-      font-family: var(--font-inter);
-      font-weight: 500;
+      font-family: var(--font-serif);
+      font-weight: 400;
       font-size: clamp(48px, 7.5vw, 96px);
-      color: var(--white);
+      color: var(--off-white);
       line-height: 1;
       flex-shrink: 0;
       min-width: 180px;
@@ -184,40 +232,95 @@
       font-weight: 500;
       font-size: clamp(15px, 1.8vw, 24px);
       line-height: 1.6;
-      color: var(--white);
+      color: var(--off-white);
       max-width: 710px;
       padding-top: 8px;
     }
 
-    /* ─── WORK / GREY SECTION ─── */
-    .work-section {
-      background: var(--grey-section);
-      min-height: 400px;
-      padding: 80px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* ─── PROJECTS ─── */
+    .projects-section {
+      background: rgba(217, 217, 217, 0.2);
+      border-radius: 54px 54px 0 0;
+      box-shadow: 14px 11px 4px 14px rgba(0, 0, 0, 0.25);
+      margin-top: -40px;
+      position: relative;
+      z-index: 2;
+      padding: clamp(60px, 10svh, 132px) clamp(24px, 11.5%, 165px) clamp(80px, 14svh, 200px);
     }
-    .work-placeholder {
+    .projects-title {
+      font-family: var(--font-serif);
+      font-weight: 400;
+      font-size: clamp(48px, 7.5vw, 96px);
+      color: var(--black);
+      line-height: 1;
+      margin-bottom: clamp(40px, 5svh, 80px);
+    }
+    .projects-grid {
+      display: flex;
+      flex-direction: column;
+      gap: clamp(16px, 2.5svh, 35px);
+    }
+    .projects-row {
+      display: flex;
+      gap: clamp(12px, 2vw, 33px);
+    }
+    .project-card {
+      flex: 1;
+      height: clamp(220px, 43svh, 440px);
+      border-radius: clamp(36px, 5.5vw, 79px);
+      position: relative;
+      overflow: hidden;
+      text-decoration: none;
+      display: block;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+    }
+    .card-pink   { background: var(--pink); }
+    .card-yellow { background: var(--yellow); }
+    .card-cyan   { background: var(--cyan); }
+
+    .project-card-label {
+      position: absolute;
+      bottom: 6.59%;
+      left: 7.96%;
+    }
+    .project-name {
+      font-family: var(--font-inter);
+      font-weight: 900;
+      font-size: clamp(13px, 1.4vw, 20px);
+      color: var(--black);
+      line-height: 1.2;
+      display: block;
+    }
+    .project-type {
       font-family: var(--font-inter);
       font-weight: 500;
-      font-size: 18px;
-      color: rgba(0,0,0,0.35);
-      text-align: center;
+      font-size: clamp(13px, 1.4vw, 20px);
+      color: var(--black);
+      display: block;
     }
 
     /* ─── RESPONSIVE ─── */
     @media (max-width: 900px) {
-      .nav { top: 20px; height: 68px; border-radius: 22px; padding: 0 24px; }
-      .nav-brand, .nav-contact { font-size: 16px; }
-      .scroll-indicator { left: 24px; bottom: 56px; }
+      .nav { top: 20px; height: 68px; border-radius: 18px; padding: 0 24px; }
+      .nav-brand, .nav-link { font-size: 16px; }
     }
     @media (max-width: 640px) {
-      .nav { width: calc(100% - 40px); top: 16px; height: 60px; padding: 0 20px; border-radius: 18px; }
+      .nav { width: calc(100% - 40px); top: 16px; height: 60px; padding: 0 20px; border-radius: 16px; }
       .nav-brand { font-size: 14px; }
-      .nav-contact { font-size: 14px; }
+      .nav-link { font-size: 14px; }
+      .nav-links { gap: 16px; }
       .about-section { flex-direction: column; gap: 24px; }
       .scroll-indicator { display: none; }
+      .stat-box { bottom: 12svh; }
+      .stat-box-right { right: 5%; }
+      .stat-box-left  { left: 5%; }
+      .projects-row { flex-direction: column; }
+      .project-card { height: clamp(180px, 45vw, 300px); }
     }
   </style>
 </head>
@@ -229,21 +332,22 @@
       <span class="nav-star">✦</span>
       Designing Stories That Move
     </a>
-    <a href="#contact" class="nav-contact">Contact me</a>
+    <div class="nav-links">
+      <a href="#work" class="nav-link">Works</a>
+      <a href="#contact" class="nav-link">Hire me</a>
+    </div>
   </nav>
 
   <!-- HERO -->
   <section class="hero">
 
-    <!-- Glimmer light overlay -->
     <img
       class="hero-glimmer"
-      src="https://www.figma.com/api/mcp/asset/bae35404-2f29-4a77-9f79-02cd31b11162"
+      src="https://www.figma.com/api/mcp/asset/262902f3-f119-4c1f-a62b-622f02d8d764"
       alt=""
       loading="eager"
     />
 
-    <!-- Scrolling marquee (duplicated for seamless loop) -->
     <div class="marquee-track" aria-hidden="true">
       <div class="marquee-inner">
         <span class="marquee-text">VARUNHA PUROHIT &nbsp;&nbsp;&nbsp; VARUNHA PUROHIT &nbsp;&nbsp;&nbsp; VARUNHA PUROHIT &nbsp;&nbsp;&nbsp;</span>
@@ -251,20 +355,36 @@
       </div>
     </div>
 
-    <!-- Portrait -->
     <div class="hero-portrait">
       <img
-        src="https://www.figma.com/api/mcp/asset/72e46c66-9949-43e8-9ede-94694d955289"
+        src="https://www.figma.com/api/mcp/asset/3b144bd5-026e-4f7b-80ce-b04faa2e6d95"
         alt="Varunha Purohit"
         loading="eager"
       />
     </div>
 
-    <!-- Scroll indicator -->
+    <!-- 2+ years -->
+    <div class="stat-box stat-box-left">
+      <div>
+        <div class="stat-primary">2+<span class="stat-unit">YEARS</span></div>
+        <div class="stat-row">DESIGN</div>
+        <div class="stat-small">EXPERIENCE</div>
+      </div>
+    </div>
+
+    <!-- 20+ projects -->
+    <div class="stat-box stat-box-right">
+      <div>
+        <div class="stat-primary">20+</div>
+        <div class="stat-small">PROJECTS</div>
+        <div class="stat-small">& BRANDS</div>
+      </div>
+    </div>
+
     <div class="scroll-indicator">
       <img
         class="scroll-arrow-img"
-        src="https://www.figma.com/api/mcp/asset/3bc332c5-8629-4800-888a-b6f0046e1074"
+        src="https://www.figma.com/api/mcp/asset/743ed1c1-5758-44c6-b9e3-b3e49be7c853"
         alt=""
         loading="eager"
       />
@@ -286,9 +406,39 @@
     </p>
   </section>
 
-  <!-- WORK SECTION (grey — content to be added from Figma) -->
-  <section class="work-section" id="work">
-    <p class="work-placeholder">Work coming soon</p>
+  <!-- PROJECTS -->
+  <section class="projects-section" id="work">
+    <h2 class="projects-title">Projects</h2>
+    <div class="projects-grid">
+      <div class="projects-row">
+        <a class="project-card card-pink" href="#">
+          <div class="project-card-label">
+            <span class="project-name">CRY FOR YOU</span>
+            <span class="project-type">motion video</span>
+          </div>
+        </a>
+        <div class="project-card card-yellow">
+          <div class="project-card-label">
+            <span class="project-name">THE GREEN GOD</span>
+            <span class="project-type">animated film</span>
+          </div>
+        </div>
+      </div>
+      <div class="projects-row">
+        <div class="project-card card-yellow">
+          <div class="project-card-label">
+            <span class="project-name">ALIEMANOID</span>
+            <span class="project-type">character modeling</span>
+          </div>
+        </div>
+        <div class="project-card card-cyan">
+          <div class="project-card-label">
+            <span class="project-name">Game assets Modeling</span>
+            <span class="project-type">3D modeling</span>
+          </div>
+        </div>
+      </div>
+    </div>
   </section>
 
 </body>
