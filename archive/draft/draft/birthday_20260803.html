@@ -898,8 +898,6 @@
   const birthdayIST = new Date('2026-08-02T18:30:00Z');
   const birthdayEndIST = new Date('2026-08-03T18:30:00Z');
 
-  triggerCelebration();
-
   function updateCountdown() {
     const now = new Date();
 
@@ -1112,6 +1110,8 @@
 
     requestAnimationFrame(animateCelebration);
   }
+
+  triggerCelebration();
 
   /* ============ SCROLL REVEAL ============ */
   const revealObserver = new IntersectionObserver((entries) => {
