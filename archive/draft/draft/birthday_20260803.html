@@ -898,17 +898,13 @@
   const birthdayIST = new Date('2026-08-02T18:30:00Z');
   const birthdayEndIST = new Date('2026-08-03T18:30:00Z');
 
+  triggerCelebration();
+
   function updateCountdown() {
     const now = new Date();
 
-    if (now >= birthdayIST && now <= birthdayEndIST) {
+    if (now >= birthdayIST) {
       countdownEl.innerHTML = '<p class="countdown-celebration">It\'s your day, Chiku.</p>';
-      triggerCelebration();
-      return;
-    }
-
-    if (now > birthdayEndIST) {
-      countdownEl.innerHTML = '<p class="countdown-celebration">Another beautiful year begins.</p>';
       return;
     }
 
