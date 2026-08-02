@@ -1,4 +1,11 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Happy Birthday, Varunha</title>
+</head>
+<body>
 <style>
   :root {
     --canvas: #f0ebe3;
@@ -526,13 +533,51 @@
 
   /* ---- Responsive ---- */
   @media (max-width: 768px) {
+    body { font-size: 1rem; }
+
+    .hero-eyebrow { font-size: 0.72rem; letter-spacing: 0.15em; }
+    .hero-content { padding: 1.5rem; }
+    .scroll-hint { bottom: 1.5rem; }
+
+    .countdown-section { padding: 3.5rem 1.5rem; }
+    .countdown-grid { gap: 1.2rem; }
+
+    .gallery { padding: 2.5rem 0 4rem; }
+    .section-spacer { padding: 0 1rem; }
     .frame--left, .frame--right, .frame--center {
-      margin-left: 1.2rem;
-      margin-right: 1.2rem;
-      max-width: calc(100% - 2.4rem);
+      margin-left: 1rem;
+      margin-right: 1rem;
+      max-width: calc(100% - 2rem);
+      transform: none;
     }
-    .brush-size { margin-left: 0; margin-top: 0.5rem; }
+    .frame { padding: 1.8rem 1.5rem; margin-bottom: 3rem; }
+    .frame::before { inset: 5px; }
+
+    .bridge { padding: 4rem 1.5rem 5rem; }
+
+    .dream-section { padding: 1.5rem 1rem 4rem; }
+    .dream-frame { padding: 6px; }
+    .dream-frame::before { inset: 3px; }
+
+    .paint-section { padding: 3.5rem 1rem 4rem; }
     .paint-toolbar { gap: 0.5rem; }
+    .swatch { width: 32px; height: 32px; }
+    .brush-size { margin-left: 0; margin-top: 0.5rem; width: 100%; justify-content: center; }
+    .brush-size input[type="range"] { width: 100px; }
+    .paint-frame-wrap { padding: 6px; max-width: 100%; }
+    .paint-frame-wrap::before { inset: 3px; }
+
+    .closing { padding: 3rem 1.5rem 5rem; }
+  }
+
+  @media (max-width: 480px) {
+    .hero-eyebrow { font-size: 0.65rem; }
+    .countdown-grid { gap: 0.8rem; }
+    .countdown-unit { min-width: 3.5rem; }
+    .frame { padding: 1.5rem 1.2rem; }
+    .bridge-route { font-size: 0.7rem; }
+    .swatch { width: 34px; height: 34px; }
+    .clear-btn { padding: 0.5rem 1.5rem; font-size: 0.8rem; }
   }
 </style>
 
@@ -981,6 +1026,21 @@
   /* ============ INTERACTIVE PAINT CANVAS ============ */
   const paintCanvas = document.getElementById('paint-canvas');
   const pCtx = paintCanvas.getContext('2d');
+
+  function sizePaintCanvas() {
+    const wrap = paintCanvas.parentElement;
+    const maxW = wrap.clientWidth - 2;
+    const w = Math.min(560, maxW);
+    const h = Math.round(w * (380 / 560));
+    paintCanvas.width = w;
+    paintCanvas.height = h;
+    pCtx.fillStyle = '#faf8f4';
+    pCtx.fillRect(0, 0, w, h);
+    pCtx.lineCap = 'round';
+    pCtx.lineJoin = 'round';
+  }
+  sizePaintCanvas();
+
   const paintColors = [
     { hex: '#d95030', name: 'Vermillion' },
     { hex: '#c9982e', name: 'Ochre' },
@@ -1018,10 +1078,7 @@
     brushSize = parseInt(e.target.value);
   });
 
-  pCtx.fillStyle = '#faf8f4';
-  pCtx.fillRect(0, 0, paintCanvas.width, paintCanvas.height);
-  pCtx.lineCap = 'round';
-  pCtx.lineJoin = 'round';
+
 
   function getPos(e) {
     const rect = paintCanvas.getBoundingClientRect();
@@ -1080,3 +1137,5 @@
 
 })();
 </script>
+</body>
+</html>
