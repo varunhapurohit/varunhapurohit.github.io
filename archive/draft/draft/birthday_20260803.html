@@ -513,6 +513,234 @@
     z-index: 9999;
   }
 
+  /* ============ 48 NOTES ADD-ON ============ */
+  .notes-divider {
+    text-align: center;
+    padding: 3rem 2rem 1rem;
+  }
+  .notes-divider-line {
+    width: 60px; height: 1px;
+    background: var(--frame-border);
+    margin: 0 auto 1.5rem;
+  }
+  .notes-divider-text {
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .notes-section {
+    max-width: 34rem;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 6rem;
+    text-align: center;
+  }
+
+  .notes-header-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.3rem;
+  }
+
+  .notes-header-title {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    font-weight: normal;
+    font-style: italic;
+    line-height: 1.15;
+    margin-bottom: 0.4rem;
+  }
+
+  .notes-header-sub {
+    font-size: 0.82rem;
+    color: var(--vermillion);
+    margin-bottom: 2.5rem;
+    letter-spacing: 0.03em;
+  }
+
+  .note-card {
+    max-width: 28rem;
+    width: 100%;
+    margin: 0 auto;
+    background: var(--canvas);
+    border: 1px solid var(--frame-border);
+    box-shadow: 0 8px 50px var(--frame-shadow);
+    padding: clamp(2rem, 5vw, 3rem);
+    position: relative;
+  }
+  .note-card::before {
+    content: '';
+    position: absolute;
+    inset: 7px;
+    border: 1px solid var(--frame-border);
+    pointer-events: none;
+  }
+
+  .note-card-art {
+    display: block;
+    margin: 0 auto 1rem;
+    max-width: 160px;
+    height: 100px;
+  }
+
+  .note-card-icon {
+    font-size: 2.2rem;
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .note-card-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: clamp(1.1rem, 2.3vw, 1.3rem);
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink);
+    text-wrap: balance;
+  }
+
+  .note-card-sig {
+    margin-top: 1.3rem;
+    font-size: 0.9rem;
+    color: var(--vermillion);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic;
+  }
+
+  .note-card-bar {
+    display: block;
+    margin: 1.3rem auto 0;
+  }
+
+  .notes-meta {
+    margin-top: 1.8rem;
+  }
+  .notes-meta-num {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.6rem;
+  }
+  .notes-meta-next {
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+  }
+  .notes-meta-next strong {
+    color: var(--ink);
+    font-weight: normal;
+    font-family: Georgia, 'Times New Roman', serif;
+  }
+
+  .notes-progress {
+    margin-top: 1.8rem;
+  }
+  .notes-progress-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin-bottom: 0.5rem;
+  }
+  .notes-progress-bar {
+    width: min(18rem, 80vw);
+    height: 3px;
+    background: var(--frame-border);
+    border-radius: 2px;
+    margin: 0 auto;
+    overflow: hidden;
+  }
+  .notes-progress-fill {
+    height: 100%;
+    border-radius: 2px;
+    background: var(--vermillion);
+    transition: width 1s ease-out;
+  }
+  .notes-dots {
+    display: flex;
+    justify-content: center;
+    gap: 3px;
+    margin-top: 0.5rem;
+    flex-wrap: wrap;
+    max-width: min(20rem, 85vw);
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .n-dot {
+    width: 5px; height: 5px; border-radius: 50%;
+    background: var(--frame-border);
+    transition: background 0.3s;
+  }
+  .n-dot.seen { background: var(--sage); }
+  .n-dot.current { background: var(--vermillion); transform: scale(1.4); }
+
+  .notes-gallery-btn {
+    margin-top: 1.5rem;
+  }
+  .notes-gallery-btn button {
+    background: none;
+    border: 1px solid var(--frame-border);
+    color: var(--ink-soft);
+    padding: 0.4rem 1.2rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+    font-family: inherit;
+  }
+  .notes-gallery-btn button:hover { color: var(--ink); border-color: var(--ink-soft); }
+
+  .notes-overlay {
+    position: fixed; inset: 0; z-index: 100;
+    background: var(--canvas); overflow-y: auto;
+    padding: 2rem 1.5rem 4rem;
+    display: none;
+  }
+  .notes-overlay.open { display: block; }
+  .notes-overlay-header {
+    text-align: center; margin-bottom: 2rem;
+  }
+  .notes-overlay-header h2 {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-weight: normal; font-style: italic;
+    font-size: clamp(1.4rem, 3vw, 1.8rem);
+    margin-bottom: 0.3rem;
+  }
+  .notes-overlay-header p { font-size: 0.8rem; color: var(--ink-soft); }
+  .notes-overlay-close {
+    position: fixed; top: 1rem; right: 1.5rem; z-index: 101;
+    background: var(--canvas); border: 1px solid var(--frame-border);
+    width: 36px; height: 36px; border-radius: 50%;
+    font-size: 1.1rem; cursor: pointer; color: var(--ink-soft);
+    display: flex; align-items: center; justify-content: center;
+    font-family: inherit;
+  }
+  .notes-overlay-grid {
+    max-width: 34rem; margin: 0 auto;
+    display: grid; grid-template-columns: 1fr; gap: 1rem;
+  }
+  .g-card {
+    padding: 1rem 1.3rem;
+    border: 1px solid var(--frame-border);
+    background: var(--canvas);
+    text-align: center;
+  }
+  .g-card.locked { opacity: 0.3; }
+  .g-card .g-icon { font-size: 1.3rem; margin-bottom: 0.4rem; }
+  .g-card .g-text {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-style: italic; font-size: 0.9rem;
+    line-height: 1.5; color: var(--ink);
+  }
+  .g-card .g-time {
+    font-size: 0.62rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--ink-soft); margin-top: 0.4rem;
+  }
+  .g-card.locked .g-text { color: var(--ink-soft); }
+
   /* ---- Reduced Motion ---- */
   @media (prefers-reduced-motion: reduce) {
     .hero-name {
@@ -568,6 +796,10 @@
     .paint-frame-wrap::before { inset: 3px; }
 
     .closing { padding: 3rem 1.5rem 5rem; }
+
+    .notes-section { padding: 1.5rem 1rem 4rem; }
+    .note-card { padding: 1.8rem 1.5rem; }
+    .note-card::before { inset: 5px; }
   }
 
   @media (max-width: 480px) {
@@ -651,12 +883,8 @@
           <stop offset="100%" stop-color="#f5daa0" stop-opacity="0"/>
         </radialGradient>
       </defs>
-
-      <!-- Sky -->
       <rect width="900" height="500" fill="url(#sky-g)"/>
       <rect width="900" height="370" fill="url(#sun-g)"/>
-
-      <!-- Skyline -->
       <g fill="#2a2540" opacity="0.8">
         <rect x="15" y="290" width="50" height="80"/>
         <rect x="70" y="258" width="38" height="112"/>
@@ -681,8 +909,6 @@
         <rect x="778" y="282" width="48" height="88"/>
         <rect x="832" y="295" width="55" height="75"/>
       </g>
-
-      <!-- Window lights -->
       <g fill="#f0d080" opacity="0.5">
         <rect x="125" y="240" width="3" height="3"/>
         <rect x="133" y="255" width="3" height="3"/>
@@ -708,27 +934,15 @@
         <rect x="748" y="298" width="3" height="3"/>
         <rect x="790" y="300" width="3" height="3"/>
       </g>
-
-      <!-- Atmospheric haze -->
       <rect x="0" y="310" width="900" height="60" fill="#bf7e72" opacity="0.18"/>
-
-      <!-- Ground -->
       <rect x="0" y="370" width="900" height="130" fill="url(#ground-g)"/>
-
-      <!-- Path / walkway -->
       <ellipse cx="430" cy="415" rx="220" ry="14" fill="#8a7d6a" opacity="0.25"/>
-
-      <!-- Tree trunk -->
       <rect x="695" y="255" width="12" height="120" fill="#5c3d2e" rx="2"/>
-
-      <!-- Branches -->
       <line x1="701" y1="305" x2="733" y2="268" stroke="#5c3d2e" stroke-width="5" stroke-linecap="round"/>
       <line x1="701" y1="290" x2="663" y2="252" stroke="#5c3d2e" stroke-width="4.5" stroke-linecap="round"/>
       <line x1="701" y1="275" x2="722" y2="238" stroke="#5c3d2e" stroke-width="3.5" stroke-linecap="round"/>
       <line x1="701" y1="295" x2="678" y2="275" stroke="#5c3d2e" stroke-width="3" stroke-linecap="round"/>
       <line x1="701" y1="315" x2="740" y2="295" stroke="#5c3d2e" stroke-width="3" stroke-linecap="round"/>
-
-      <!-- Fall foliage -->
       <circle cx="658" cy="232" r="30" fill="#c9982e" opacity="0.78"/>
       <circle cx="700" cy="218" r="36" fill="#d95030" opacity="0.7"/>
       <circle cx="738" cy="240" r="28" fill="#c9982e" opacity="0.72"/>
@@ -740,8 +954,6 @@
       <circle cx="712" cy="230" r="22" fill="#d4707a" opacity="0.45"/>
       <circle cx="680" cy="222" r="18" fill="#d95030" opacity="0.55"/>
       <circle cx="735" cy="260" r="14" fill="#e07030" opacity="0.5"/>
-
-      <!-- Bench -->
       <g fill="#3a3230">
         <rect x="370" y="354" width="108" height="4" rx="1"/>
         <rect x="373" y="334" width="102" height="3" rx="1"/>
@@ -751,26 +963,18 @@
         <rect x="393" y="358" width="4" height="20"/>
         <rect x="452" y="358" width="4" height="20"/>
       </g>
-
-      <!-- Couple silhouettes -->
       <g fill="#2a2540">
-        <!-- Person 1 -->
         <circle cx="408" cy="303" r="9"/>
         <path d="M398,312 C396,328 397,354 396,354 L420,354 C419,354 420,328 418,312 Q413,308 408,312 Z"/>
-        <!-- Person 2 (leaning in) -->
         <circle cx="438" cy="298" r="9"/>
         <path d="M428,307 C426,323 427,354 426,354 L452,354 C451,354 452,323 450,307 Q445,303 438,307 Z" transform="rotate(-5, 438, 330)"/>
       </g>
-
-      <!-- Falling leaves -->
       <ellipse cx="652" cy="305" rx="4" ry="2" fill="#d95030" opacity="0.7" transform="rotate(42, 652, 305)"/>
       <ellipse cx="728" cy="328" rx="3.2" ry="1.6" fill="#c9982e" opacity="0.6" transform="rotate(-28, 728, 328)"/>
       <ellipse cx="682" cy="348" rx="3.5" ry="1.8" fill="#e07030" opacity="0.62" transform="rotate(58, 682, 348)"/>
       <ellipse cx="638" cy="378" rx="3" ry="1.5" fill="#d95030" opacity="0.5" transform="rotate(18, 638, 378)"/>
       <ellipse cx="714" cy="368" rx="3.8" ry="1.9" fill="#c9982e" opacity="0.52" transform="rotate(-42, 714, 368)"/>
       <ellipse cx="760" cy="345" rx="2.8" ry="1.4" fill="#d4707a" opacity="0.5" transform="rotate(32, 760, 345)"/>
-
-      <!-- Leaves on ground -->
       <ellipse cx="385" cy="386" rx="3" ry="1.5" fill="#d95030" opacity="0.45" transform="rotate(12, 385, 386)"/>
       <ellipse cx="505" cy="390" rx="3.5" ry="1.8" fill="#c9982e" opacity="0.4" transform="rotate(-18, 505, 390)"/>
       <ellipse cx="340" cy="393" rx="2.8" ry="1.4" fill="#e07030" opacity="0.38" transform="rotate(32, 340, 393)"/>
@@ -802,34 +1006,79 @@
   <p class="signature">With all my love,<br>Your Momo</p>
 </section>
 
+<!-- ====== 48 NOTES FROM MOMO ====== -->
+<div class="notes-divider reveal">
+  <div class="notes-divider-line"></div>
+  <p class="notes-divider-text">A surprise that lasts all day</p>
+</div>
+
+<section class="notes-section reveal" id="notes-section">
+  <p class="notes-header-eyebrow">48 Notes from Momo</p>
+  <h2 class="notes-header-title display">Your surprise right now</h2>
+  <p class="notes-header-sub">A new note every 30 minutes, all day long</p>
+
+  <div class="note-card" id="note-card">
+    <canvas class="note-card-art" id="note-art" width="160" height="100"></canvas>
+    <div class="note-card-icon" id="note-icon"></div>
+    <p class="note-card-text" id="note-text"></p>
+    <p class="note-card-sig">&mdash; Your Momo</p>
+    <canvas class="note-card-bar" id="note-bar" width="50" height="4"></canvas>
+  </div>
+
+  <div class="notes-meta">
+    <p class="notes-meta-num" id="notes-num"></p>
+    <p class="notes-meta-next" id="notes-next"></p>
+  </div>
+
+  <div class="notes-progress">
+    <p class="notes-progress-label">Your birthday timeline</p>
+    <div class="notes-progress-bar"><div class="notes-progress-fill" id="notes-fill"></div></div>
+    <div class="notes-dots" id="notes-dots"></div>
+  </div>
+
+  <div class="notes-gallery-btn">
+    <button id="notes-gallery-open">Notes you've discovered</button>
+  </div>
+</section>
+
+<!-- Notes Gallery Overlay -->
+<div class="notes-overlay" id="notes-overlay">
+  <button class="notes-overlay-close" id="notes-overlay-close">&times;</button>
+  <div class="notes-overlay-header">
+    <h2 class="display">Notes Discovered</h2>
+    <p id="notes-overlay-count"></p>
+  </div>
+  <div class="notes-overlay-grid" id="notes-overlay-grid"></div>
+</div>
+
 <script>
 (function () {
   /* ============ HERO WATERCOLOR CANVAS ============ */
-  const heroCanvas = document.getElementById('hero-canvas');
-  const hCtx = heroCanvas.getContext('2d');
-  const palette = ['#d95030', '#c9982e', '#5e846a', '#8b7bb5', '#e8c4b8', '#d4707a'];
+  var heroCanvas = document.getElementById('hero-canvas');
+  var hCtx = heroCanvas.getContext('2d');
+  var palette = ['#d95030', '#c9982e', '#5e846a', '#8b7bb5', '#e8c4b8', '#d4707a'];
 
   function resizeHero() {
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
     heroCanvas.width = heroCanvas.offsetWidth * dpr;
     heroCanvas.height = heroCanvas.offsetHeight * dpr;
     hCtx.scale(dpr, dpr);
   }
 
   resizeHero();
-  window.addEventListener('resize', () => {
+  window.addEventListener('resize', function() {
     resizeHero();
     paintBlobs(true);
   });
 
   function paintBlobs(instant) {
-    const w = heroCanvas.offsetWidth;
-    const h = heroCanvas.offsetHeight;
+    var w = heroCanvas.offsetWidth;
+    var h = heroCanvas.offsetHeight;
     hCtx.clearRect(0, 0, w, h);
-    const count = Math.max(12, Math.floor((w * h) / 25000));
-    const blobs = [];
+    var count = Math.max(12, Math.floor((w * h) / 25000));
+    var blobs = [];
 
-    for (let i = 0; i < count; i++) {
+    for (var i = 0; i < count; i++) {
       blobs.push({
         x: Math.random() * w,
         y: Math.random() * h,
@@ -840,22 +1089,22 @@
       });
     }
 
-    let startTime = null;
+    var startTime = null;
 
     function draw(ts) {
       if (!startTime) startTime = ts;
-      const elapsed = ts - startTime;
+      var elapsed = ts - startTime;
       hCtx.clearRect(0, 0, w, h);
-      let allDone = true;
+      var allDone = true;
 
-      blobs.forEach(b => {
-        const t = Math.min(1, Math.max(0, (elapsed - b.delay) / 900));
+      blobs.forEach(function(b) {
+        var t = Math.min(1, Math.max(0, (elapsed - b.delay) / 900));
         if (t <= 0) { allDone = false; return; }
         if (t < 1) allDone = false;
 
-        const eased = 1 - Math.pow(1 - t, 3);
-        const currentR = b.r * eased;
-        const grad = hCtx.createRadialGradient(b.x, b.y, 0, b.x, b.y, currentR);
+        var eased = 1 - Math.pow(1 - t, 3);
+        var currentR = b.r * eased;
+        var grad = hCtx.createRadialGradient(b.x, b.y, 0, b.x, b.y, currentR);
         grad.addColorStop(0, b.color);
         grad.addColorStop(0.6, b.color);
         grad.addColorStop(1, 'transparent');
@@ -872,7 +1121,7 @@
     }
 
     if (instant) {
-      blobs.forEach(b => b.delay = 0);
+      blobs.forEach(function(b) { b.delay = 0; });
       draw(1e9);
     } else {
       requestAnimationFrame(draw);
@@ -886,33 +1135,32 @@
   }
 
   /* ============ ACCENT LINES ============ */
-  document.querySelectorAll('.accent-line').forEach((c, i) => {
-    const ctx = c.getContext('2d');
-    const colors = ['#d95030', '#c9982e', '#5e846a'];
+  document.querySelectorAll('.accent-line').forEach(function(c, i) {
+    var ctx = c.getContext('2d');
+    var colors = ['#d95030', '#c9982e', '#5e846a'];
     ctx.fillStyle = colors[i % colors.length];
     ctx.fillRect(0, 0, c.width, c.height);
   });
 
   /* ============ COUNTDOWN ============ */
-  const countdownEl = document.getElementById('countdown');
-  const birthdayIST = new Date('2026-08-02T18:30:00Z');
-  const birthdayEndIST = new Date('2026-08-03T18:30:00Z');
+  var countdownEl = document.getElementById('countdown');
+  var birthdayIST = new Date('2026-08-02T18:30:00Z');
 
   function updateCountdown() {
-    const now = new Date();
+    var now = new Date();
 
     if (now >= birthdayIST) {
       countdownEl.innerHTML = '<p class="countdown-celebration">It\'s your day, Chiku.</p>';
       return;
     }
 
-    const diff = birthdayIST - now;
-    const d = Math.floor(diff / 86400000);
-    const h = Math.floor((diff % 86400000) / 3600000);
-    const m = Math.floor((diff % 3600000) / 60000);
-    const s = Math.floor((diff % 60000) / 1000);
+    var diff = birthdayIST - now;
+    var d = Math.floor(diff / 86400000);
+    var h = Math.floor((diff % 86400000) / 3600000);
+    var m = Math.floor((diff % 3600000) / 60000);
+    var s = Math.floor((diff % 60000) / 1000);
 
-    let html = '<p class="countdown-label">Until midnight in Gurugram</p><div class="countdown-grid">';
+    var html = '<p class="countdown-label">Until midnight in Gurugram</p><div class="countdown-grid">';
     if (d > 0) html += unit(d, d === 1 ? 'day' : 'days');
     html += unit(h, h === 1 ? 'hour' : 'hours');
     html += unit(m, m === 1 ? 'minute' : 'minutes');
@@ -930,31 +1178,30 @@
   setInterval(updateCountdown, 1000);
 
   /* ============ CELEBRATION PAINT SPLASH PARTY ============ */
-  let celebrated = false;
+  var celebrated = false;
   function triggerCelebration() {
     if (celebrated) return;
     celebrated = true;
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-    const cc = document.getElementById('celebration-canvas');
-    const cCtx = cc.getContext('2d');
-    const dpr = Math.min(window.devicePixelRatio || 1, 2);
+    var cc = document.getElementById('celebration-canvas');
+    var cCtx = cc.getContext('2d');
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
     cc.width = window.innerWidth * dpr;
     cc.height = window.innerHeight * dpr;
     cCtx.scale(dpr, dpr);
-    const cw = window.innerWidth;
-    const ch = window.innerHeight;
-    const cx = cw / 2;
-    const cy = ch / 2;
+    var cw = window.innerWidth;
+    var ch = window.innerHeight;
+    var cx = cw / 2;
+    var cy = ch / 2;
 
-    const particles = [];
-    const splats = [];
-    const confetti = [];
+    var particles = [];
+    var splats = [];
+    var confetti = [];
 
-    // Wave 1: Center burst explosion
-    for (let i = 0; i < 120; i++) {
-      const angle = (Math.PI * 2 * i) / 120 + (Math.random() - 0.5) * 0.3;
-      const speed = 4 + Math.random() * 12;
+    for (var i = 0; i < 120; i++) {
+      var angle = (Math.PI * 2 * i) / 120 + (Math.random() - 0.5) * 0.3;
+      var speed = 4 + Math.random() * 12;
       particles.push({
         x: cx, y: cy,
         vx: Math.cos(angle) * speed,
@@ -967,8 +1214,7 @@
       });
     }
 
-    // Wave 2: Rain from top
-    for (let i = 0; i < 80; i++) {
+    for (var i2 = 0; i2 < 80; i2++) {
       particles.push({
         x: Math.random() * cw,
         y: -20 - Math.random() * 200,
@@ -982,9 +1228,8 @@
       });
     }
 
-    // Wave 3: Side bursts
-    for (let i = 0; i < 50; i++) {
-      const fromLeft = i % 2 === 0;
+    for (var i3 = 0; i3 < 50; i3++) {
+      var fromLeft = i3 % 2 === 0;
       particles.push({
         x: fromLeft ? -10 : cw + 10,
         y: ch * 0.3 + Math.random() * ch * 0.4,
@@ -998,8 +1243,7 @@
       });
     }
 
-    // Confetti rectangles
-    for (let i = 0; i < 100; i++) {
+    for (var i4 = 0; i4 < 100; i4++) {
       confetti.push({
         x: Math.random() * cw,
         y: -20 - Math.random() * ch,
@@ -1015,31 +1259,28 @@
       });
     }
 
-    let frames = 0;
-    const totalFrames = 360;
+    var frames = 0;
+    var totalFrames = 360;
 
     function animateCelebration() {
       frames++;
       cCtx.clearRect(0, 0, cw, ch);
 
-      // Flash at the start
       if (frames < 8) {
         cCtx.globalAlpha = 0.3 * (1 - frames / 8);
         cCtx.fillStyle = '#fff';
         cCtx.fillRect(0, 0, cw, ch);
       }
 
-      const fadeOut = Math.max(0, 1 - Math.max(0, frames - 240) / 120);
+      var fadeOut = Math.max(0, 1 - Math.max(0, frames - 240) / 120);
 
-      // Paint particles
-      particles.forEach(p => {
+      particles.forEach(function(p) {
         if (frames < p.delay) return;
         p.x += p.vx;
         p.y += p.vy;
         p.vy += p.gravity;
         p.vx *= 0.995;
 
-        // Splat on edges
         if (p.y > ch + 20 || p.x < -20 || p.x > cw + 20) {
           if (!p.done && p.y <= ch + 20) {
             splats.push({
@@ -1053,7 +1294,6 @@
           return;
         }
 
-        // Splat on ground
         if (p.y >= ch - p.r && !p.done) {
           p.done = true;
           splats.push({
@@ -1072,8 +1312,7 @@
         cCtx.fill();
       });
 
-      // Splats stay on screen
-      splats.forEach(s => {
+      splats.forEach(function(s) {
         cCtx.globalAlpha = s.opacity * fadeOut;
         cCtx.fillStyle = s.color;
         cCtx.beginPath();
@@ -1081,8 +1320,7 @@
         cCtx.fill();
       });
 
-      // Confetti
-      confetti.forEach(c => {
+      confetti.forEach(function(c) {
         if (frames < c.delay) return;
         c.y += c.vy;
         c.x += c.vx + Math.sin(frames * 0.03 + c.x) * 0.5;
@@ -1114,25 +1352,25 @@
   triggerCelebration();
 
   /* ============ SCROLL REVEAL ============ */
-  const revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
+  var revealObserver = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
       if (entry.isIntersecting) {
         entry.target.classList.add('revealed');
       }
     });
   }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
 
-  document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+  document.querySelectorAll('.reveal').forEach(function(el) { revealObserver.observe(el); });
 
   /* ============ INTERACTIVE PAINT CANVAS ============ */
-  const paintCanvas = document.getElementById('paint-canvas');
-  const pCtx = paintCanvas.getContext('2d');
+  var paintCanvas = document.getElementById('paint-canvas');
+  var pCtx = paintCanvas.getContext('2d');
 
   function sizePaintCanvas() {
-    const wrap = paintCanvas.parentElement;
-    const maxW = wrap.clientWidth - 2;
-    const w = Math.min(560, maxW);
-    const h = Math.round(w * (380 / 560));
+    var wrap = paintCanvas.parentElement;
+    var maxW = wrap.clientWidth - 2;
+    var w = Math.min(560, maxW);
+    var h = Math.round(w * (380 / 560));
     paintCanvas.width = w;
     paintCanvas.height = h;
     pCtx.fillStyle = '#faf8f4';
@@ -1142,7 +1380,7 @@
   }
   sizePaintCanvas();
 
-  const paintColors = [
+  var paintColors = [
     { hex: '#d95030', name: 'Vermillion' },
     { hex: '#c9982e', name: 'Ochre' },
     { hex: '#5e846a', name: 'Sage' },
@@ -1151,41 +1389,39 @@
     { hex: '#1c1b2e', name: 'Ink' },
     { hex: '#f0ebe3', name: 'Canvas' }
   ];
-  let currentColor = paintColors[0].hex;
-  let brushSize = 8;
-  let painting = false;
-  let lastX, lastY;
+  var currentColor = paintColors[0].hex;
+  var brushSize = 8;
+  var painting = false;
+  var lastX, lastY;
 
-  const toolbar = document.getElementById('paint-toolbar');
-  paintColors.forEach((c, i) => {
-    const swatch = document.createElement('div');
+  var toolbar = document.getElementById('paint-toolbar');
+  paintColors.forEach(function(c, i) {
+    var swatch = document.createElement('div');
     swatch.className = 'swatch' + (i === 0 ? ' active' : '');
     swatch.style.background = c.hex;
     if (c.name === 'Canvas') swatch.style.border = '2px solid var(--frame-border)';
     swatch.title = c.name;
-    swatch.addEventListener('click', () => {
+    swatch.addEventListener('click', function() {
       currentColor = c.hex;
-      document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.swatch').forEach(function(s) { s.classList.remove('active'); });
       swatch.classList.add('active');
     });
     toolbar.appendChild(swatch);
   });
 
-  const sizeWrap = document.createElement('div');
+  var sizeWrap = document.createElement('div');
   sizeWrap.className = 'brush-size';
   sizeWrap.innerHTML = '<label>Brush</label><input type="range" min="2" max="30" value="8">';
   toolbar.appendChild(sizeWrap);
-  sizeWrap.querySelector('input').addEventListener('input', e => {
+  sizeWrap.querySelector('input').addEventListener('input', function(e) {
     brushSize = parseInt(e.target.value);
   });
 
-
-
   function getPos(e) {
-    const rect = paintCanvas.getBoundingClientRect();
-    const scaleX = paintCanvas.width / rect.width;
-    const scaleY = paintCanvas.height / rect.height;
-    const touch = e.touches ? e.touches[0] : e;
+    var rect = paintCanvas.getBoundingClientRect();
+    var scaleX = paintCanvas.width / rect.width;
+    var scaleY = paintCanvas.height / rect.height;
+    var touch = e.touches ? e.touches[0] : e;
     return {
       x: (touch.clientX - rect.left) * scaleX,
       y: (touch.clientY - rect.top) * scaleY
@@ -1194,7 +1430,7 @@
 
   function startPaint(e) {
     painting = true;
-    const pos = getPos(e);
+    var pos = getPos(e);
     lastX = pos.x;
     lastY = pos.y;
     pCtx.beginPath();
@@ -1208,7 +1444,7 @@
   function doPaint(e) {
     if (!painting) return;
     e.preventDefault();
-    const pos = getPos(e);
+    var pos = getPos(e);
     pCtx.strokeStyle = currentColor;
     pCtx.lineWidth = brushSize;
     pCtx.globalAlpha = 0.7;
@@ -1231,9 +1467,173 @@
   paintCanvas.addEventListener('touchmove', doPaint, { passive: false });
   paintCanvas.addEventListener('touchend', endPaint);
 
-  document.getElementById('clear-btn').addEventListener('click', () => {
+  document.getElementById('clear-btn').addEventListener('click', function() {
     pCtx.fillStyle = '#faf8f4';
     pCtx.fillRect(0, 0, paintCanvas.width, paintCanvas.height);
+  });
+
+  /* ============ 48 NOTES FROM MOMO ============ */
+  var NOTES = [
+    { msg: "Hey Chiku, it's midnight. Happy birthday, baby girl. This is the first of 48 little surprises I left for you today. Keep coming back.", icon: "🎂", color: "#8b7bb5" },
+    { msg: "Hey love, Radhe Radhe, Hare Krishna. The first thirty minutes of your 24th year, and I'm already thinking about you from across the world.", icon: "🙏", color: "#c9982e" },
+    { msg: "You're probably asleep right now, Chiku. That's okay. This note will wait for you, just like I do.", icon: "🌙", color: "#8b7bb5" },
+    { msg: "I met you on 11th November. I would count it as the best day of my life. Every day since has been proof.", icon: "💫", color: "#d95030" },
+    { msg: "You are my laal pari, soni pari....... the kind of magic that doesn't need an explanation.", icon: "🧚", color: "#d4707a" },
+    { msg: "Somewhere in Gurugram, the most creative person I know is sleeping. And somewhere in Dallas, someone can't stop smiling about her.", icon: "🌃", color: "#5e846a" },
+    { msg: "You are such a pure soul. I don't say it enough, but your heart is the most beautiful thing about you, Chiku.", icon: "🤍", color: "#8b7bb5" },
+    { msg: "24 looks good on you. Actually, everything looks good on you. But especially 24.", icon: "✨", color: "#c9982e" },
+    { msg: "My Ramgarh ki princess. No crown needed. The whole kingdom already knows.", icon: "👑", color: "#d95030" },
+    { msg: "The way you see the world — through an artist's eyes — makes everything you touch more beautiful. Never lose that.", icon: "🎨", color: "#5e846a" },
+    { msg: "You are my sebdi. No translation needed. You know exactly what that means and why it's you.", icon: "💕", color: "#d4707a" },
+    { msg: "I am blessed to have you in my life, baby girl. Not lucky — blessed. There's a difference.", icon: "🌸", color: "#e8c4b8" },
+    { msg: "Hey Chiku, good morning! Wake up wake up wake up. It's YOUR day.", icon: "☀️", color: "#c9982e" },
+    { msg: "Good morning, birthday girl. The sun came up in Gurugram and honestly, it had competition today.", icon: "🌅", color: "#d95030" },
+    { msg: "Hope you are having a good day, baby girl. If not yet, open this note again. I'll wait.", icon: "💛", color: "#c9982e" },
+    { msg: "You are the cutest girl I know offfff. And I know this because I tell you every day and I'm still not tired of saying it.", icon: "🥰", color: "#d4707a" },
+    { msg: "Kuch khana khaya? Nahi khaya ho toh jaldi khao..... birthday girl ko proper breakfast chahiye.", icon: "🍳", color: "#5e846a" },
+    { msg: "Every frame you animate, every design you touch — you're literally making the world more beautiful for a living. How cool is that?", icon: "🎬", color: "#8b7bb5" },
+    { msg: "You are my cutie patotieeeeee. I said what I said. No take-backs.", icon: "🧁", color: "#d4707a" },
+    { msg: "Jaldi se US aa jao, phir apan ghumi ghumi karenge. NYC, Philly, everywhere. You and me.", icon: "✈️", color: "#5e846a" },
+    { msg: "The way you laugh. The way you think. The way you care. It all adds up to someone extraordinary, Chiku.", icon: "💐", color: "#e8c4b8" },
+    { msg: "Can't wait to see you here in Philly..... we're going to make so many memories that even our grandkids will be jealous.", icon: "🏙️", color: "#8b7bb5" },
+    { msg: "You know what makes a great motion designer? Vision. You know what makes a great person? Heart. You have both, baby girl.", icon: "💎", color: "#c9982e" },
+    { msg: "Halfway through the morning. Have you smiled at least 12 times today? That's the minimum requirement for birthdays.", icon: "😊", color: "#d95030" },
+    { msg: "Afternoon, Chiku. You've been 24 for twelve whole hours now. How does it feel? (The correct answer is 'amazing.')", icon: "🎈", color: "#d95030" },
+    { msg: "You are the love of my life. Not a line. Not a moment. A fact. The kind that doesn't change with time zones.", icon: "❤️", color: "#d95030" },
+    { msg: "Right now in Dallas, I'm looking at the same sky you'll see in a few hours. Distance doesn't stand a chance.", icon: "🌤️", color: "#5e846a" },
+    { msg: "Kuch khana khaya? Lunch time hai. Properly khao, Chiku. Birthday pe dieting allowed nahi hai.", icon: "🍽️", color: "#c9982e" },
+    { msg: "Fun fact: you are the only person who can make me smile just by existing. That's talent right there.", icon: "⭐", color: "#c9982e" },
+    { msg: "The colors you choose, the frames you set in motion — you create worlds that didn't exist before you imagined them.", icon: "🌈", color: "#8b7bb5" },
+    { msg: "One day we'll sit on a bench in New York, leaves falling around us, and you'll say 'Momo, you actually did all this for my birthday.' And I'll say 'obviously.'", icon: "🍂", color: "#5e846a" },
+    { msg: "Hey love, just checking in. You're still the most important person in my life. Thought you should know. Again.", icon: "💌", color: "#d4707a" },
+    { msg: "You make ordinary moments feel like something worth framing. That's not a skill — that's who you are.", icon: "🖼️", color: "#8b7bb5" },
+    { msg: "You are my sebdi, my laal pari, my cutie patootie, my Ramgarh ki princess, and my entire world. All at once.", icon: "👸", color: "#d95030" },
+    { msg: "8,500 miles between Dallas and Gurugram. And not one of them can dull what I feel for you, Chiku.", icon: "🌍", color: "#5e846a" },
+    { msg: "I hope your birthday is as creative, interesting, and funny as you are. Three words that were invented just to describe you.", icon: "🎉", color: "#c9982e" },
+    { msg: "Evening, birthday girl. The golden hour is hitting Gurugram right now, and it's got nothing on you.", icon: "🌇", color: "#c9982e" },
+    { msg: "You know what I love about you? Everything. But if I had to pick — the way your eyes light up when you talk about art.", icon: "🎭", color: "#8b7bb5" },
+    { msg: "Kuch khana khaya? Dinner time, Chiku. Birthday cake counts as dinner. I don't make the rules.", icon: "🎂", color: "#d4707a" },
+    { msg: "The sun is going down on your birthday in Gurugram. But honestly, you're the brightest thing in that city anyway.", icon: "🌆", color: "#d95030" },
+    { msg: "From Ramgarh to Gurugram to wherever life takes you next — I'll be right there. Even if 'there' is 8,500 miles away.", icon: "🗺️", color: "#5e846a" },
+    { msg: "You carry an energy that makes everything around you more alive. The room knows when you walk in, Chiku.", icon: "🔥", color: "#d95030" },
+    { msg: "I'm counting the days until I see you. Every single one. And on each one, I love you a little more than the last.", icon: "📅", color: "#8b7bb5" },
+    { msg: "Late night birthday thoughts from Momo: you are the best thing that ever happened to me. That's not romance talking. That's just truth.", icon: "💜", color: "#8b7bb5" },
+    { msg: "Hey love, Radhe Radhe. The stars are out in Gurugram. Wish I was there to watch them with you.", icon: "🌟", color: "#c9982e" },
+    { msg: "You are such a pure soul, Chiku. The world doesn't always deserve you. But I'm grateful it has you.", icon: "🕊️", color: "#e8c4b8" },
+    { msg: "Almost midnight. Your birthday is almost over. But my love for you? That doesn't run on a clock, baby girl.", icon: "🕛", color: "#d4707a" },
+    { msg: "Last note of the day, Chiku. 48 out of 48. You made it. I love you — today, tomorrow, and every day your art makes the world more beautiful. Happy birthday, my everything.", icon: "💝", color: "#d95030" }
+  ];
+
+  function getIST() {
+    var now = new Date();
+    var utc = now.getTime() + now.getTimezoneOffset() * 60000;
+    return new Date(utc + 5.5 * 3600000);
+  }
+
+  function getSlot(ist) {
+    return Math.floor((ist.getHours() * 60 + ist.getMinutes()) / 30);
+  }
+
+  function formatNoteTime(slot) {
+    var totalMin = slot * 30;
+    var h = Math.floor(totalMin / 60);
+    var m = totalMin % 60;
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    if (h === 0) h = 12;
+    else if (h > 12) h -= 12;
+    return h + ':' + String(m).padStart(2, '0') + ' ' + ampm;
+  }
+
+  var NOTES_STORAGE = 'momo_notes_2026';
+  function getNoteSeen() {
+    try { return JSON.parse(localStorage.getItem(NOTES_STORAGE)) || []; } catch(e) { return []; }
+  }
+  function markNoteSeen(slot) {
+    var seen = getNoteSeen();
+    if (seen.indexOf(slot) === -1) { seen.push(slot); localStorage.setItem(NOTES_STORAGE, JSON.stringify(seen)); }
+  }
+
+  var ist = getIST();
+  var currentSlot = getSlot(ist);
+  var note = NOTES[currentSlot];
+
+  markNoteSeen(currentSlot);
+  var seenSlots = getNoteSeen();
+
+  document.getElementById('note-icon').textContent = note.icon;
+  document.getElementById('note-text').textContent = note.msg;
+
+  var barCanvas = document.getElementById('note-bar');
+  var barCtx = barCanvas.getContext('2d');
+  barCtx.fillStyle = note.color;
+  barCtx.fillRect(0, 0, 50, 4);
+
+  document.getElementById('notes-num').textContent = 'Note ' + (currentSlot + 1) + ' of 48';
+  var nextSlot = currentSlot + 1;
+  if (nextSlot < 48) {
+    document.getElementById('notes-next').innerHTML = 'Next surprise at <strong>' + formatNoteTime(nextSlot) + ' IST</strong>';
+  } else {
+    document.getElementById('notes-next').innerHTML = '<strong>You found the last note!</strong>';
+  }
+
+  document.getElementById('notes-fill').style.width = ((currentSlot + 1) / 48 * 100) + '%';
+
+  var dotsContainer = document.getElementById('notes-dots');
+  for (var di = 0; di < 48; di++) {
+    var dot = document.createElement('span');
+    dot.className = 'n-dot';
+    if (di === currentSlot) dot.classList.add('current');
+    else if (seenSlots.indexOf(di) !== -1) dot.classList.add('seen');
+    dotsContainer.appendChild(dot);
+  }
+
+  // Note art watercolor blobs
+  var artCanvas = document.getElementById('note-art');
+  var aCtx = artCanvas.getContext('2d');
+  for (var aj = 0; aj < 8; aj++) {
+    var grad = aCtx.createRadialGradient(
+      20 + Math.random() * 120, 10 + Math.random() * 80, 0,
+      20 + Math.random() * 120, 10 + Math.random() * 80, 12 + Math.random() * 25
+    );
+    var blobColor = palette[Math.floor(Math.random() * palette.length)];
+    grad.addColorStop(0, blobColor);
+    grad.addColorStop(0.6, blobColor);
+    grad.addColorStop(1, 'transparent');
+    aCtx.globalAlpha = 0.12 + Math.random() * 0.12;
+    aCtx.fillStyle = grad;
+    aCtx.beginPath();
+    aCtx.arc(20 + Math.random() * 120, 10 + Math.random() * 80, 12 + Math.random() * 25, 0, Math.PI * 2);
+    aCtx.fill();
+  }
+  aCtx.globalAlpha = 1;
+
+  // Gallery overlay
+  document.getElementById('notes-gallery-open').addEventListener('click', function() {
+    var overlay = document.getElementById('notes-overlay');
+    overlay.classList.add('open');
+    var grid = document.getElementById('notes-overlay-grid');
+    grid.innerHTML = '';
+    var seenNow = getNoteSeen();
+    document.getElementById('notes-overlay-count').textContent = seenNow.length + ' of 48 discovered';
+
+    for (var gk = 0; gk < 48; gk++) {
+      var card = document.createElement('div');
+      card.className = 'g-card' + (seenNow.indexOf(gk) !== -1 ? '' : ' locked');
+      if (seenNow.indexOf(gk) !== -1) {
+        card.innerHTML = '<div class="g-icon">' + NOTES[gk].icon + '</div>' +
+          '<div class="g-text">' + NOTES[gk].msg + '</div>' +
+          '<div class="g-time">' + formatNoteTime(gk) + ' – ' + formatNoteTime(gk + 1) + ' IST</div>';
+      } else {
+        card.innerHTML = '<div class="g-icon">🔒</div>' +
+          '<div class="g-text">Come back at ' + formatNoteTime(gk) + ' IST to unlock</div>' +
+          '<div class="g-time">' + formatNoteTime(gk) + ' – ' + formatNoteTime(gk + 1) + ' IST</div>';
+      }
+      grid.appendChild(card);
+    }
+  });
+
+  document.getElementById('notes-overlay-close').addEventListener('click', function() {
+    document.getElementById('notes-overlay').classList.remove('open');
   });
 
 })();
